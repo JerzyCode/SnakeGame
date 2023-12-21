@@ -1,4 +1,4 @@
-package com.jerzy.window.panels.settings;
+package com.jerzy.window.panels;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

@@ -1,7 +1,7 @@
 package com.jerzy.window;
 
-import com.jerzy.window.panels.settings.CurrentView;
-import com.jerzy.window.panels.settings.SettingsPanel;
+import com.jerzy.window.panels.CurrentPanel;
+import com.jerzy.window.panels.SettingsPanel;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -14,7 +14,7 @@ public class Window {
 
   private final JFrame mainFrame;
   private final SettingsPanel settingsPanel;
-  private final CurrentView currentView;
+  private final CurrentPanel currentPanel;
   private final JButton newGameButton;
   private final JButton statisticsButton;
 
@@ -24,7 +24,7 @@ public class Window {
     this.mainFrame = new JFrame();
     createButtons();
     this.settingsPanel = new SettingsPanel(newGameButton, statisticsButton);
-    this.currentView = new CurrentView(settingsPanel);
+    this.currentPanel = new CurrentPanel(settingsPanel);
     initialize();
   }
 
@@ -33,7 +33,7 @@ public class Window {
     this.mainFrame.setPreferredSize(new Dimension(WIDTH, HEIGHT));
     this.mainFrame.setResizable(false);
     this.mainFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-    this.mainFrame.add(currentView);
+    this.mainFrame.add(currentPanel);
     this.mainFrame.setLocation(0, 0);
     this.mainFrame.setVisible(true);
     this.mainFrame.pack();
@@ -58,7 +58,7 @@ public class Window {
     createButton(statisticsButton, "Statistics Button");
     statisticsButton.addActionListener(e -> {
       System.out.println("Statistics Pressed");
-      currentView.showStatisticsPanel();
+      currentPanel.showStatisticsPanel();
     });
   }
 
@@ -66,7 +66,7 @@ public class Window {
     createButton(newGameButton, "New Game");
     newGameButton.addActionListener(e -> {
       System.out.println("New Game Pressed");
-      currentView.showGamePanel();
+      currentPanel.showGamePanel();
     });
   }
 

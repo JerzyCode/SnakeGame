@@ -1,15 +1,15 @@
-package com.jerzy.window.panels.settings;
+package com.jerzy.window.panels;
 
 import javax.swing.*;
 import java.awt.*;
 
 import static com.jerzy.utils.Constants.*;
 
-public class CurrentView extends JPanel {
+public class CurrentPanel extends JPanel {
   private final CardLayout cardLayout;
   private final SettingsPanel settingsPanel;
 
-  public CurrentView(SettingsPanel settingsPanel) {
+  public CurrentPanel(SettingsPanel settingsPanel) {
     this.settingsPanel = settingsPanel;
     this.cardLayout = new CardLayout();
     initialize();

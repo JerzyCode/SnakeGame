@@ -8,6 +8,7 @@ import static com.jerzy.utils.Constants.*;
 public class CurrentPanel extends JPanel {
   private final CardLayout cardLayout;
   private final SettingsPanel settingsPanel;
+  private GamePanel gamePanel;
 
   public CurrentPanel(SettingsPanel settingsPanel) {
     this.settingsPanel = settingsPanel;
@@ -41,4 +42,15 @@ public class CurrentPanel extends JPanel {
   public void showStatisticsPanel() {
     cardLayout.show(this, STATISTICS_PANEL);
   }
+
+  public void refreshGameInCurrentPanel(GamePanel gamePanel) {
+    if (this.gamePanel != null) {
+      this.remove(this.gamePanel);
+    }
+    this.gamePanel = gamePanel;
+    this.add(this.gamePanel);
+    this.cardLayout.addLayoutComponent(this.gamePanel, GAME_PANEL);
+    this.setLayout(cardLayout);
+  }
+
 }

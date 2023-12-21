@@ -19,5 +19,8 @@ public class Constants {
   public static final String STATISTICS_PANEL = "statistics-panel";
   public static final int BUTTON_WIDTH = 250;
   public static final Dimension BUTTON_SIZE = new Dimension(250, 50);
+  public static final int UNIT_SIZE = 50;
+  public static final int UNITS_PER_LINE = WIDTH/UNIT_SIZE;
+  public static final int FPS = 10;
 
 }

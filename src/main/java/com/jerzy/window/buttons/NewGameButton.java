@@ -1,6 +1,7 @@
 package com.jerzy.window.buttons;
 
 import com.jerzy.game.Game;
+import com.jerzy.game.controls.KeyboardInputs;
 import com.jerzy.window.panels.CurrentPanel;
 import com.jerzy.window.panels.ScorePanel;
 
@@ -26,11 +27,11 @@ public class NewGameButton extends JButton {
     this.setFocusPainted(false);
   }
 
-  public void addKeyActionListener(CurrentPanel currentPanel) {
+  public void addKeyActionListener(CurrentPanel currentPanel, KeyboardInputs keyboardInputs) {
     this.addActionListener(e -> {
       System.out.println("New Game Pressed");
       ScorePanel scorePanel = new ScorePanel();
-      new Game(currentPanel, scorePanel);
+      new Game(currentPanel, scorePanel, keyboardInputs);
     });
   }
 

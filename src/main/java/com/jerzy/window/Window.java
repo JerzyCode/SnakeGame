@@ -19,9 +19,7 @@ public class Window {
   private final NewGameButton gameButton;
   private final CurrentPanel currentPanel;
   private final StatisticsButton statisticsButton;
-
-  //TODO ma być jeden obiekt typu KeyBoardsInput, i przekazać go w konstruktorach aż do GamePanel
-
+  private final KeyboardInputs keyboardInputs;
 
   public Window() {
     this.mainFrame = new JFrame();
@@ -29,6 +27,7 @@ public class Window {
     this.statisticsButton = new StatisticsButton();
     this.settingsPanel = new SettingsPanel(gameButton, statisticsButton);
     this.currentPanel = new CurrentPanel(settingsPanel);
+    this.keyboardInputs = new KeyboardInputs();
     addKeyListeners();
     initialize();
   }
@@ -46,7 +45,7 @@ public class Window {
   }
 
   private void addKeyListeners() {
-    gameButton.addKeyActionListener(this.currentPanel);
+    gameButton.addKeyActionListener(this.currentPanel, this.keyboardInputs);
     statisticsButton.addKeyActionListener(this.currentPanel);
   }
 

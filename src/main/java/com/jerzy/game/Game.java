@@ -19,11 +19,12 @@ public class Game implements Runnable {
   private final CurrentPanel currentPanel;
   private Thread gameThread;
 
-  public Game(CurrentPanel currentPanel, ScorePanel scorePanel) {
+  public Game(CurrentPanel currentPanel, ScorePanel scorePanel, KeyboardInputs keyboardInputs) {
     this.currentPanel = currentPanel;
     this.snake = new Snake(0, 0);
+    keyboardInputs.setSnake(this.snake);
     this.scorePanel = scorePanel;
-    this.gamePanel = new GamePanel(snake, new Fruit(snake.getTail()), scorePanel);
+    this.gamePanel = new GamePanel(snake, new Fruit(snake.getTail()), scorePanel, keyboardInputs);
     refreshGamePanel();
     startGameLoop();
   }

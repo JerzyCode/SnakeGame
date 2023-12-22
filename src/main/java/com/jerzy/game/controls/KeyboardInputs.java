@@ -8,9 +8,10 @@ import java.awt.event.KeyListener;
 public class KeyboardInputs implements KeyListener {
   private Snake snake;
 
+  public KeyboardInputs() {
+  }
 
-
-  public KeyboardInputs(Snake snake) {
+  public void setSnake(Snake snake) {
     this.snake = snake;
   }
 

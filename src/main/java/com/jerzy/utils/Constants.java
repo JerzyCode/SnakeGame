@@ -22,5 +22,6 @@ public class Constants {
   public static final int UNIT_SIZE = 50;
   public static final int UNITS_PER_LINE = WIDTH/UNIT_SIZE;
   public static final int FPS = 10;
+  public static final int UPS = 10; //
 
 }

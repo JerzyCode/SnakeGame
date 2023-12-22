@@ -6,7 +6,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyboardInputs implements KeyListener {
-  private final Snake snake;
+  private Snake snake;
+
+
 
   public KeyboardInputs(Snake snake) {
     this.snake = snake;
@@ -18,6 +20,10 @@ public class KeyboardInputs implements KeyListener {
 
   @Override
   public void keyPressed(KeyEvent e) {
+
+    if (!snake.isMoved())
+      return;
+
     switch (e.getKeyCode()) {
       case KeyEvent.VK_UP:
         if (snake.getDirection() != Direction.DOWN) {
@@ -42,10 +48,11 @@ public class KeyboardInputs implements KeyListener {
       default:
         break;
     }
+    snake.setMoved(false);
   }
 
   @Override
   public void keyReleased(KeyEvent e) {
-
   }
+
 }

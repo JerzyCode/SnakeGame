@@ -1,5 +1,6 @@
 package com.jerzy.window;
 
+import com.jerzy.game.controls.KeyboardInputs;
 import com.jerzy.window.buttons.NewGameButton;
 import com.jerzy.window.buttons.StatisticsButton;
 import com.jerzy.window.panels.CurrentPanel;
@@ -18,6 +19,9 @@ public class Window {
   private final NewGameButton gameButton;
   private final CurrentPanel currentPanel;
   private final StatisticsButton statisticsButton;
+
+  //TODO ma być jeden obiekt typu KeyBoardsInput, i przekazać go w konstruktorach aż do GamePanel
+
 
   public Window() {
     this.mainFrame = new JFrame();

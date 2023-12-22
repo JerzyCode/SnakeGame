@@ -9,6 +9,7 @@ public class Snake {
   private int xHead;
   private int yHead;
   private int length;
+  private boolean moved;
   private Direction direction;
   //  private Clip eatingSound = SoundsPlayer.getEatingSound();
   //  private Clip deadSound = SoundsPlayer.getDeadSound();
@@ -29,24 +30,12 @@ public class Snake {
     return xHead;
   }
 
-  public void setxHead(int xHead) {
-    this.xHead = xHead;
-  }
-
   public int getyHead() {
     return yHead;
   }
 
-  public void setyHead(int yHead) {
-    this.yHead = yHead;
-  }
-
   public int getLength() {
     return length;
-  }
-
-  public void setLength(int length) {
-    this.length = length;
   }
 
   public void setDirection(Direction direction) {
@@ -59,6 +48,14 @@ public class Snake {
 
   public int[][] getTail() {
     return tail;
+  }
+
+  public boolean isMoved() {
+    return moved;
+  }
+
+  public void setMoved(boolean moved) {
+    this.moved = moved;
   }
 
   public void move() {
@@ -86,6 +83,8 @@ public class Snake {
       xHead = 0;
     if (xHead < 0)
       xHead = 650;
+
+    moved = true;
   }
 
   public void eatFruit() {

@@ -1,5 +1,6 @@
 package com.jerzy.game;
 
+import com.jerzy.game.controls.KeyboardInputs;
 import com.jerzy.game.game_objects.Fruit;
 import com.jerzy.game.game_objects.Snake;
 import com.jerzy.window.panels.CurrentPanel;
@@ -9,6 +10,7 @@ import com.jerzy.window.panels.ScorePanel;
 import javax.swing.*;
 
 import static com.jerzy.utils.Constants.FPS;
+import static com.jerzy.utils.Constants.UPS;
 
 public class Game implements Runnable {
   private final Snake snake;
@@ -33,18 +35,41 @@ public class Game implements Runnable {
 
   @Override
   public void run() {
-
     //DURATION SHOULD EACH FRAME LAST
     double timePerFrame = 1000000000.0 / FPS;
+    double timePerUpdate = 1000000000.0 / UPS;
+    long previousTime = System.nanoTime();
+    int frames = 0;
+    int updates = 0;
+    long lastCheck = System.currentTimeMillis();
+    double deltaUpdates = 0;
+    double deltaFrames = 0;
 
-    long lastFrame = System.nanoTime();
     while (!isGameOver()) {
-      long now = System.nanoTime();
-      if (now - lastFrame >= timePerFrame) {
-        gamePanel.repaint();
+      long currentTime = System.nanoTime();
+
+      deltaUpdates += (currentTime - previousTime) / timePerUpdate;
+      deltaFrames += (currentTime - previousTime) / timePerFrame;
+      previousTime = currentTime;
+
+      if (deltaUpdates >= 1) {
         snake.move();
         snakeEatingFruit();
-        lastFrame = now;
+        updates += 1;
+        deltaUpdates -= 1;
+      }
+
+      if (deltaFrames >= 1) {
+        gamePanel.repaint();
+        frames += 1;
+        deltaFrames -= 1;
+      }
+
+      if (System.currentTimeMillis() - lastCheck >= 1000) {
+        lastCheck = System.currentTimeMillis();
+        System.out.println("FPS: " + frames + " | UPS: " + updates);
+        frames = 0;
+        updates = 0;
       }
     }
     try {

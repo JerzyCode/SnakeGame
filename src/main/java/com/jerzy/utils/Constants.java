@@ -20,8 +20,13 @@ public class Constants {
   public static final int BUTTON_WIDTH = 250;
   public static final Dimension BUTTON_SIZE = new Dimension(250, 50);
   public static final int UNIT_SIZE = 50;
-  public static final int UNITS_PER_LINE = WIDTH/UNIT_SIZE;
+  public static final int UNITS_PER_LINE = WIDTH / UNIT_SIZE;
   public static final int FPS = 10;
-  public static final int UPS = 10; //
+  public static final int UPS = 10;
+  public static final String DEAD_SOUND_URL = "/sounds/deadSound.wav";
+  public static final String EAT_SOUND_URL = "/sounds/eatSound.wav";
+  public static final int DEAD_SOUND = 0;
+  public static final int EAT_SOUND = 1;
 
 }
+

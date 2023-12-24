@@ -1,6 +1,5 @@
 package com.jerzy.window.panels;
 
-import com.jerzy.game.controls.KeyboardInputs;
 import com.jerzy.game.game_objects.Fruit;
 import com.jerzy.game.game_objects.Snake;
 
@@ -14,8 +13,6 @@ import static com.jerzy.utils.Constants.UNIT_SIZE;
 public class GameContentPanel extends JPanel {
   private final transient Snake snake;
   private transient Fruit fruit;
-  private int frames = 0;
-  private long lastCheck = 0;
 
   public GameContentPanel(Snake snake, Fruit fruit) {
     this.snake = snake;
@@ -24,25 +21,16 @@ public class GameContentPanel extends JPanel {
   }
 
   private void initialize() {
-    this.addKeyListener(new KeyboardInputs(snake));
     this.setBackground(Color.BLACK);
     this.setFocusable(true);
   }
 
   @Override
   public void paintComponent(Graphics graphics) {
-
     super.paintComponent(graphics);
     drawLines(graphics);
     drawSnake(graphics);
     drawFruit(graphics);
-
-    frames++;
-    if (System.currentTimeMillis() - lastCheck >= 1000) {
-      lastCheck = System.currentTimeMillis();
-      System.out.println("FPS: " + frames);
-      frames = 0;
-    }
   }
 
   private void drawLines(Graphics graphics) {
@@ -51,14 +39,20 @@ public class GameContentPanel extends JPanel {
   }
 
   private void drawSnake(Graphics graphics) {
-    graphics.setColor(Color.RED);
     int xHead = snake.getxHead();
     int yHead = snake.getyHead();
+
+    graphics.setColor(Color.RED);
     graphics.fillRect(xHead, yHead, UNIT_SIZE, UNIT_SIZE);
+
     int[][] tail = snake.getTail();
     for (int i = 0; i < snake.getLength(); i++) {
       graphics.setColor(Color.GREEN);
       graphics.fillRect(tail[i][0], tail[i][1], UNIT_SIZE, UNIT_SIZE);
+      if (snake.snakeEatItself()) {
+        graphics.setColor(Color.GRAY);
+        graphics.fillRect(xHead, yHead, UNIT_SIZE, UNIT_SIZE);
+      }
     }
 
   }

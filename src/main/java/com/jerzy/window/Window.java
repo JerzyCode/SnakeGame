@@ -1,5 +1,6 @@
 package com.jerzy.window;
 
+import com.jerzy.game.controls.KeyboardInputs;
 import com.jerzy.window.buttons.NewGameButton;
 import com.jerzy.window.buttons.StatisticsButton;
 import com.jerzy.window.panels.CurrentPanel;
@@ -18,6 +19,7 @@ public class Window {
   private final NewGameButton gameButton;
   private final CurrentPanel currentPanel;
   private final StatisticsButton statisticsButton;
+  private final KeyboardInputs keyboardInputs;
 
   public Window() {
     this.mainFrame = new JFrame();
@@ -25,6 +27,7 @@ public class Window {
     this.statisticsButton = new StatisticsButton();
     this.settingsPanel = new SettingsPanel(gameButton, statisticsButton);
     this.currentPanel = new CurrentPanel(settingsPanel);
+    this.keyboardInputs = new KeyboardInputs();
     addKeyListeners();
     initialize();
   }
@@ -42,7 +45,7 @@ public class Window {
   }
 
   private void addKeyListeners() {
-    gameButton.addKeyActionListener(this.currentPanel);
+    gameButton.addKeyActionListener(this.currentPanel, this.keyboardInputs);
     statisticsButton.addKeyActionListener(this.currentPanel);
   }
 

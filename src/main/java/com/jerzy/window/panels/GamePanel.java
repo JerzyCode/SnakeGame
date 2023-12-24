@@ -9,14 +9,14 @@ import java.awt.*;
 
 public class GamePanel extends JPanel {
 
-  private final transient Snake snake;
   private final GameContentPanel gameContentPanel;
+  private final transient KeyboardInputs keyboardInputs;
   private final ScorePanel scorePanel;
 
-  public GamePanel(Snake snake, Fruit fruit, ScorePanel scorePanel) {
+  public GamePanel(Snake snake, Fruit fruit, ScorePanel scorePanel, KeyboardInputs keyboardInputs) {
     this.scorePanel = scorePanel;
+    this.keyboardInputs = keyboardInputs;
     this.gameContentPanel = new GameContentPanel(snake, fruit);
-    this.snake = snake;
     initialize();
   }
 
@@ -24,7 +24,7 @@ public class GamePanel extends JPanel {
     this.setLayout(new BorderLayout());
     this.add(scorePanel, BorderLayout.NORTH);
     this.add(gameContentPanel, BorderLayout.CENTER);
-    this.addKeyListener(new KeyboardInputs(snake));
+    this.addKeyListener(this.keyboardInputs);
     this.setBackground(Color.BLACK);
     this.setFocusable(true);
   }

@@ -11,8 +11,6 @@ public class Snake {
   private int length;
   private boolean moved;
   private Direction direction;
-  //  private Clip eatingSound = SoundsPlayer.getEatingSound();
-  //  private Clip deadSound = SoundsPlayer.getDeadSound();
   private int[][] tail;
 
   public Snake(int xHead, int yHead) {
@@ -91,24 +89,14 @@ public class Snake {
     tail[length][0] = xHead;
     tail[length][1] = yHead;
     length += 1;
-    //    makeEatingSound();
   }
 
   public boolean snakeEatItself() {
     for (int i = 1; i < length; i++) {
       if (xHead == tail[i - 1][0] && yHead == tail[i - 1][1]) {
-        //        deadSound.start();
         return true;
       }
     }
     return false;
   }
-
-  //  public void makeEatingSound(){
-  //    if (!eatingSound.isRunning()) {
-  //      eatingSound.start();
-  //      eatingSound.setFramePosition(0);
-  //    }
-  //  }
-
 }

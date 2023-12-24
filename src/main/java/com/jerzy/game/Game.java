@@ -3,20 +3,21 @@ package com.jerzy.game;
 import com.jerzy.game.controls.KeyboardInputs;
 import com.jerzy.game.game_objects.Fruit;
 import com.jerzy.game.game_objects.Snake;
+import com.jerzy.game.sound.Sound;
 import com.jerzy.window.panels.CurrentPanel;
 import com.jerzy.window.panels.GamePanel;
 import com.jerzy.window.panels.ScorePanel;
 
 import javax.swing.*;
 
-import static com.jerzy.utils.Constants.FPS;
-import static com.jerzy.utils.Constants.UPS;
+import static com.jerzy.utils.Constants.*;
 
 public class Game implements Runnable {
   private final Snake snake;
   private final GamePanel gamePanel;
   private final ScorePanel scorePanel;
   private final CurrentPanel currentPanel;
+  private final Sound sound = new Sound();
   private Thread gameThread;
 
   public Game(CurrentPanel currentPanel, ScorePanel scorePanel, KeyboardInputs keyboardInputs) {
@@ -86,6 +87,7 @@ public class Game implements Runnable {
   private void snakeEatingFruit() {
     if (gamePanel.getFruit().getX() == snake.getxHead()
         && gamePanel.getFruit().getY() == snake.getyHead()) {
+      makeEatingSound();
       gamePanel.setFruit(new Fruit(snake.getTail()));
       snake.eatFruit();
       scorePanel.setScore(scorePanel.getScore() + 10);
@@ -94,7 +96,11 @@ public class Game implements Runnable {
   }
 
   private boolean isGameOver() {
-    return snake.snakeEatItself();
+    if (snake.snakeEatItself()) {
+      makeSnakeEatItselfSound();
+      return true;
+    }
+    return false;
   }
 
   public void closeGame() {
@@ -107,5 +113,15 @@ public class Game implements Runnable {
     SwingUtilities.invokeLater(this.gamePanel::requestFocus);
     this.currentPanel.refreshGameInCurrentPanel(gamePanel);
     this.currentPanel.showGamePanel();
+  }
+
+  private void makeEatingSound() {
+    sound.setFile(EAT_SOUND);
+    sound.play();
+  }
+
+  private void makeSnakeEatItselfSound() {
+    sound.setFile(DEAD_SOUND);
+    sound.play();
   }
 }

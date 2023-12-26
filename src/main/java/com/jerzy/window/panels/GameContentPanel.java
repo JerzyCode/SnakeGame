@@ -2,9 +2,11 @@ package com.jerzy.window.panels;
 
 import com.jerzy.game.game_objects.Fruit;
 import com.jerzy.game.game_objects.Snake;
+import com.jerzy.game.images.FruitImg;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import static com.jerzy.utils.Constants.UNITS_PER_LINE;
@@ -41,10 +43,8 @@ public class GameContentPanel extends JPanel {
   private void drawSnake(Graphics graphics) {
     int xHead = snake.getxHead();
     int yHead = snake.getyHead();
-
     graphics.setColor(Color.RED);
     graphics.fillRect(xHead, yHead, UNIT_SIZE, UNIT_SIZE);
-
     int[][] tail = snake.getTail();
     for (int i = 0; i < snake.getLength(); i++) {
       graphics.setColor(Color.GREEN);
@@ -58,8 +58,8 @@ public class GameContentPanel extends JPanel {
   }
 
   private void drawFruit(Graphics graphics) {
-    graphics.setColor(Color.ORANGE);
-    graphics.fillOval(fruit.getX(), fruit.getY(), UNIT_SIZE, UNIT_SIZE);
+    BufferedImage image = FruitImg.getFruitImg().getImg();
+    graphics.drawImage(image, fruit.getX(), fruit.getY(), Color.BLACK, null);
   }
 
   public void setFruit(Fruit fruit) {

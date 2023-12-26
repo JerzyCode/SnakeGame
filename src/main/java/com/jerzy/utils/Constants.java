@@ -25,6 +25,7 @@ public class Constants {
   public static final int UPS = 10;
   public static final String DEAD_SOUND_URL = "/sounds/deadSound.wav";
   public static final String EAT_SOUND_URL = "/sounds/eatSound.wav";
+  public static final String FRUIT_IMAGE_URL = "/images/apple.png";
   public static final int DEAD_SOUND = 0;
   public static final int EAT_SOUND = 1;
 

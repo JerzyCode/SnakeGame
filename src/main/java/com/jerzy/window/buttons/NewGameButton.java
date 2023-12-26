@@ -2,6 +2,7 @@ package com.jerzy.window.buttons;
 
 import com.jerzy.game.Game;
 import com.jerzy.game.controls.KeyboardInputs;
+import com.jerzy.game.sound.Sound;
 import com.jerzy.window.panels.CurrentPanel;
 import com.jerzy.window.panels.ScorePanel;
 

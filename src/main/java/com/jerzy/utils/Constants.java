@@ -13,7 +13,6 @@ public class Constants {
   public static final Color FRAME_COLOR = Color.BLACK;
   public static final Color BUTTON_COLOR = new Color(60, 150, 60);
   public static final Color TEXT_COLOR = Color.BLACK;
-
   public static final String SETTINGS_PANEL = "settings-panel";
   public static final String GAME_PANEL = "game-panel";
   public static final String STATISTICS_PANEL = "statistics-panel";
@@ -26,6 +25,8 @@ public class Constants {
   public static final String DEAD_SOUND_URL = "/sounds/deadSound.wav";
   public static final String EAT_SOUND_URL = "/sounds/eatSound.wav";
   public static final String FRUIT_IMAGE_URL = "/images/apple.png";
+  public static final String GRASS_IMAGE_URL = "/images/grass.png";
+
   public static final int DEAD_SOUND = 0;
   public static final int EAT_SOUND = 1;
 

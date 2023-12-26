@@ -3,6 +3,7 @@ package com.jerzy.window.panels;
 import com.jerzy.game.game_objects.Fruit;
 import com.jerzy.game.game_objects.Snake;
 import com.jerzy.game.images.FruitImg;
+import com.jerzy.game.images.GrassImg;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,9 +31,19 @@ public class GameContentPanel extends JPanel {
   @Override
   public void paintComponent(Graphics graphics) {
     super.paintComponent(graphics);
+    drawGrass(graphics);
     drawLines(graphics);
     drawSnake(graphics);
     drawFruit(graphics);
+  }
+
+  private void drawGrass(Graphics graphics) {
+    BufferedImage image = GrassImg.getGrassImg().getImg();
+    for (int i = 0; i < UNITS_PER_LINE; i++) {
+      for (int j = 0; j < UNITS_PER_LINE; j++) {
+        graphics.drawImage(image, i*UNIT_SIZE, j*UNIT_SIZE, null);
+      }
+    }
   }
 
   private void drawLines(Graphics graphics) {
@@ -47,7 +58,7 @@ public class GameContentPanel extends JPanel {
     graphics.fillRect(xHead, yHead, UNIT_SIZE, UNIT_SIZE);
     int[][] tail = snake.getTail();
     for (int i = 0; i < snake.getLength(); i++) {
-      graphics.setColor(Color.GREEN);
+      graphics.setColor(Color.BLUE);
       graphics.fillRect(tail[i][0], tail[i][1], UNIT_SIZE, UNIT_SIZE);
       if (snake.snakeEatItself()) {
         graphics.setColor(Color.GRAY);
@@ -59,7 +70,7 @@ public class GameContentPanel extends JPanel {
 
   private void drawFruit(Graphics graphics) {
     BufferedImage image = FruitImg.getFruitImg().getImg();
-    graphics.drawImage(image, fruit.getX(), fruit.getY(), Color.BLACK, null);
+    graphics.drawImage(image, fruit.getX(), fruit.getY(), null);
   }
 
   public void setFruit(Fruit fruit) {

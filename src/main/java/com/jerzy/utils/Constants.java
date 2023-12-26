@@ -20,12 +20,20 @@ public class Constants {
   public static final Dimension BUTTON_SIZE = new Dimension(250, 50);
   public static final int UNIT_SIZE = 50;
   public static final int UNITS_PER_LINE = WIDTH / UNIT_SIZE;
-  public static final int FPS = 10;
+  public static final int FPS = 30;
   public static final int UPS = 10;
   public static final String DEAD_SOUND_URL = "/sounds/deadSound.wav";
   public static final String EAT_SOUND_URL = "/sounds/eatSound.wav";
   public static final String FRUIT_IMAGE_URL = "/images/apple.png";
   public static final String GRASS_IMAGE_URL = "/images/grass.png";
+  public static final String HEAD_UP_IMAGE = "/images/head/head_up.png";
+  public static final String HEAD_DOWN_IMAGE = "/images/head/head_down.png";
+
+  public static final String HEAD_LEFT_IMAGE = "/images/head/head_left.png";
+
+  public static final String HEAD_RIGHT_IMAGE = "/images/head/head_right.png";
+
+
 
   public static final int DEAD_SOUND = 0;
   public static final int EAT_SOUND = 1;

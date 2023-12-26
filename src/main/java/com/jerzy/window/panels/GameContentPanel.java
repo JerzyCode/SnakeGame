@@ -4,6 +4,7 @@ import com.jerzy.game.game_objects.Fruit;
 import com.jerzy.game.game_objects.Snake;
 import com.jerzy.game.images.FruitImg;
 import com.jerzy.game.images.GrassImg;
+import com.jerzy.game.images.HeadImage;
 
 import javax.swing.*;
 import java.awt.*;
@@ -41,7 +42,7 @@ public class GameContentPanel extends JPanel {
     BufferedImage image = GrassImg.getGrassImg().getImg();
     for (int i = 0; i < UNITS_PER_LINE; i++) {
       for (int j = 0; j < UNITS_PER_LINE; j++) {
-        graphics.drawImage(image, i*UNIT_SIZE, j*UNIT_SIZE, null);
+        graphics.drawImage(image, i * UNIT_SIZE, j * UNIT_SIZE, null);
       }
     }
   }
@@ -54,8 +55,7 @@ public class GameContentPanel extends JPanel {
   private void drawSnake(Graphics graphics) {
     int xHead = snake.getxHead();
     int yHead = snake.getyHead();
-    graphics.setColor(Color.RED);
-    graphics.fillRect(xHead, yHead, UNIT_SIZE, UNIT_SIZE);
+    drawSnakeHead(graphics, xHead, yHead);
     int[][] tail = snake.getTail();
     for (int i = 0; i < snake.getLength(); i++) {
       graphics.setColor(Color.BLUE);
@@ -65,7 +65,15 @@ public class GameContentPanel extends JPanel {
         graphics.fillRect(xHead, yHead, UNIT_SIZE, UNIT_SIZE);
       }
     }
+  }
 
+  private void drawSnakeHead(Graphics graphics, int xHead, int yHead) {
+    switch (snake.getDirection()) {
+      case UP -> graphics.drawImage(HeadImage.getHeadImage().getHeadUpImg(), xHead, yHead, null);
+      case DOWN -> graphics.drawImage(HeadImage.getHeadImage().getHeadDownImg(), xHead, yHead, null);
+      case LEFT -> graphics.drawImage(HeadImage.getHeadImage().getHeadLeftImg(), xHead, yHead, null);
+      case RIGHT -> graphics.drawImage(HeadImage.getHeadImage().getHeadRightImg(), xHead, yHead, null);
+    }
   }
 
   private void drawFruit(Graphics graphics) {

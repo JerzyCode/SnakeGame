@@ -22,7 +22,7 @@ public class Game implements Runnable {
 
   public Game(CurrentPanel currentPanel, ScorePanel scorePanel, KeyboardInputs keyboardInputs) {
     this.currentPanel = currentPanel;
-    this.snake = new Snake(0, 0);
+    this.snake = new Snake(UNIT_SIZE, 0);
     keyboardInputs.setSnake(this.snake);
     this.scorePanel = scorePanel;
     this.gamePanel = new GamePanel(snake, new Fruit(snake.getTail()), scorePanel, keyboardInputs);
@@ -69,7 +69,7 @@ public class Game implements Runnable {
 
       if (System.currentTimeMillis() - lastCheck >= 1000) {
         lastCheck = System.currentTimeMillis();
-//        System.out.println("FPS: " + frames + " | UPS: " + updates);
+        //        System.out.println("FPS: " + frames + " | UPS: " + updates);
         frames = 0;
         updates = 0;
       }
@@ -98,6 +98,7 @@ public class Game implements Runnable {
   private boolean isGameOver() {
     if (snake.snakeEatItself()) {
       makeSnakeEatItselfSound();
+      gamePanel.repaint();
       return true;
     }
     return false;

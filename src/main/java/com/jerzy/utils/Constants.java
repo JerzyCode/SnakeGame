@@ -28,13 +28,19 @@ public class Constants {
   public static final String GRASS_IMAGE_URL = "/images/grass.png";
   public static final String HEAD_UP_IMAGE = "/images/head/head_up.png";
   public static final String HEAD_DOWN_IMAGE = "/images/head/head_down.png";
-
   public static final String HEAD_LEFT_IMAGE = "/images/head/head_left.png";
-
   public static final String HEAD_RIGHT_IMAGE = "/images/head/head_right.png";
 
-
-
+  public static final String TAIL_UP_IMAGE = "/images/tail/tail_up.png";
+  public static final String TAIL_DOWN_IMAGE = "/images/tail/tail_down.png";
+  public static final String TAIL_LEFT_IMAGE = "/images/tail/tail_left.png";
+  public static final String TAIL_RIGHT_IMAGE = "/images/tail/tail_right.png";
+  public static final String BODY_BOTTOM_LEFT_IMAGE = "/images/body/body_bottom_left.png";
+  public static final String BODY_BOTTOM_RIGHT_IMAGE = "/images/body/body_bottom_right.png";
+  public static final String BODY_TOP_LEFT_IMAGE = "/images/body/body_top_left.png";
+  public static final String BODY_TOP_RIGHT_IMAGE = "/images/body/body_top_right.png";
+  public static final String BODY_VERTICAL_IMAGE = "/images/body/body_vertical.png";
+  public static final String BODY_HORIZONTAL_IMAGE = "/images/body/body_horizontal.png";
   public static final int DEAD_SOUND = 0;
   public static final int EAT_SOUND = 1;
 

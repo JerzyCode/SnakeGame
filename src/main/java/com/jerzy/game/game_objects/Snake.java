@@ -89,13 +89,14 @@ public class Snake {
   }
 
   public void eatFruit() {
-    tail[length][0] = xHead;
-    tail[length][1] = yHead;
     length += 1;
+    tail[length-1][0]=tail[length-2][0];
+    tail[length-1][1]=tail[length-2][1];
+    //TODO dodać animacje jak wąż zje to ze to jablko idzie przez brzuch
   }
 
   public boolean snakeEatItself() {
-    for (int i = 2; i < length; i++) {
+    for (int i = 2; i <= length; i++) {
       if (tail[0][0] == tail[i - 1][0] && tail[0][1] == tail[i - 1][1]) {
         return true;
       }
@@ -104,7 +105,4 @@ public class Snake {
   }
 }
 
-//TODO, pozbyć się pola xHead yHead, to pole ma być zawsze na pierwszym elemencie w tablicy tail
-//TODO JEST TEŻ PROBLEM, ZE PRZY ZJADANIU SAMEGO SIEBIE PRZY PRZECHODZENIU PRZEZ SCIANE
-//TODO DOLICZANA JEST JEDNA KRATKA I POWINNO TO JESC SZYBCIEJ
 //TODO PONADTO PROBLEM Z RYSOWANIEM SKRZYZOWAN WEZA PO PRZEJSCIU PRZEZ SCIANE

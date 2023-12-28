@@ -11,15 +11,15 @@ public class Snake {
   private int length;
   private boolean moved;
   private Direction direction;
-  private int[][] tail;
+  private final int[][] tail;
 
   public Snake(int xHead, int yHead) {
     this.xHead = xHead;
     this.yHead = yHead;
     this.tail = new int[UNITS_PER_LINE * UNITS_PER_LINE][2];
-    this.length = 0;
-    tail[length][0] = xHead;
-    tail[length][1] = yHead;
+    this.length = 1;
+    tail[0][0] = xHead;
+    tail[0][1] = yHead;
     length += 1;
     direction = Direction.RIGHT;
   }
@@ -82,21 +82,27 @@ public class Snake {
     if (xHead < 0)
       xHead = 650;
 
+    tail[0][0] = xHead;
+    tail[0][1] = yHead;
+
     moved = true;
   }
 
   public void eatFruit() {
-    tail[length][0] = xHead;
-    tail[length][1] = yHead;
     length += 1;
+    tail[length-1][0]=tail[length-2][0];
+    tail[length-1][1]=tail[length-2][1];
+    //TODO dodać animacje jak wąż zje to ze to jablko idzie przez brzuch
   }
 
   public boolean snakeEatItself() {
-    for (int i = 1; i < length; i++) {
-      if (xHead == tail[i - 1][0] && yHead == tail[i - 1][1]) {
+    for (int i = 2; i <= length; i++) {
+      if (tail[0][0] == tail[i - 1][0] && tail[0][1] == tail[i - 1][1]) {
         return true;
       }
     }
     return false;
   }
 }
+
+//TODO PONADTO PROBLEM Z RYSOWANIEM SKRZYZOWAN WEZA PO PRZEJSCIU PRZEZ SCIANE
